@@ -1,18 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:stateview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_images"
+    <com.codigodelsur.androidsampleproject.view.StateView
+        android:id="@+id/state_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        stateview:contentResource="@layout/image_list_content"
+        stateview:loadingResource="@layout/image_list_loading_view"
+        stateview:emptyResource="@layout/image_list_empty_view"/>
 
-    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

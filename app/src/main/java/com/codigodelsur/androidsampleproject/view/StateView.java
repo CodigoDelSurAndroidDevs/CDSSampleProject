@@ -15,8 +15,8 @@ import com.codigodelsur.androidsampleproject.R;
  */
 public class StateView extends ViewFlipper {
 
-    private int indexLoading, indexContent, indexEmpty;
-    private int LoadingResourceId, ContentResourceId, EmptyResourceId;
+    private int mIndexLoading, mIndexContent, mIndexEmpty;
+    private int mLoadingResourceId, mContentResourceId, mEmptyResourceId;
     private boolean hadAttrs;
 
     private View loadingView;
@@ -26,7 +26,7 @@ public class StateView extends ViewFlipper {
     }
 
     public boolean isShowingLoadingView() {
-        return getDisplayedChild() == indexLoading;
+        return getDisplayedChild() == mIndexLoading;
     }
 
     private View contentView;
@@ -36,7 +36,7 @@ public class StateView extends ViewFlipper {
     }
 
     public boolean isShowingContentView() {
-        return getDisplayedChild() == indexContent;
+        return getDisplayedChild() == mIndexContent;
     }
 
     private View emptyView;
@@ -46,7 +46,7 @@ public class StateView extends ViewFlipper {
     }
 
     public boolean isShowingEmptyView() {
-        return (getDisplayedChild() == indexEmpty);
+        return (getDisplayedChild() == mIndexEmpty);
     }
 
     public StateView(Context context) {
@@ -63,16 +63,10 @@ public class StateView extends ViewFlipper {
         hadAttrs = (attrs != null);
         if (attrs != null) {
             TypedArray styledAttributes = getContext().getApplicationContext().obtainStyledAttributes(attrs, R.styleable.StateView);
-
             // Load the resource IDs for each property from the styled attributes set
-            LoadingResourceId = styledAttributes.getResourceId(R.styleable.StateView_loadingResource, 0);
-            ContentResourceId = styledAttributes.getResourceId(R.styleable.StateView_contentResource, 0);
-            EmptyResourceId = styledAttributes.getResourceId(R.styleable.StateView_emptyResource, 0);
-
-            // Set the default animations for changing between View Flipper children
-/*            this.setAnimateFirstView(false);
-            this.setInAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in));
-            this.setOutAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_out));*/
+            mLoadingResourceId = styledAttributes.getResourceId(R.styleable.StateView_loadingResource, 0);
+            mContentResourceId = styledAttributes.getResourceId(R.styleable.StateView_contentResource, 0);
+            mEmptyResourceId = styledAttributes.getResourceId(R.styleable.StateView_emptyResource, 0);
 
             styledAttributes.recycle();
         }
@@ -83,9 +77,9 @@ public class StateView extends ViewFlipper {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-/*        peopleView = inflateAndAddResource(R.layout.view_people);
-        groupView = inflateAndAddResource(R.layout.view_groups);
-        weevView = inflateAndAddResource(R.layout.view_weevs);*/
+        loadingView = inflateAndAddResource(mLoadingResourceId);
+        contentView = inflateAndAddResource(mContentResourceId);
+        emptyView = inflateAndAddResource(mEmptyResourceId);
 
         cacheViewIndices();
     }
@@ -94,9 +88,9 @@ public class StateView extends ViewFlipper {
      * Update the cached view indices for all states of the Loading Banana Peel view flipper.
      */
     protected void cacheViewIndices() {
-        indexLoading = indexOfChild(loadingView);
-        indexContent = indexOfChild(contentView);
-        indexEmpty = indexOfChild(emptyView);
+        mIndexLoading = indexOfChild(loadingView);
+        mIndexContent = indexOfChild(contentView);
+        mIndexEmpty = indexOfChild(emptyView);
     }
 
     /**
@@ -205,7 +199,7 @@ public class StateView extends ViewFlipper {
         this.post(new Runnable() {
             @Override
             public void run() {
-                setDisplayedChild(indexLoading);
+                setDisplayedChild(mIndexLoading);
             }
         });
     }
@@ -217,7 +211,7 @@ public class StateView extends ViewFlipper {
         this.post(new Runnable() {
             @Override
             public void run() {
-                setDisplayedChild(indexContent);
+                setDisplayedChild(mIndexContent);
             }
         });
     }
@@ -229,7 +223,7 @@ public class StateView extends ViewFlipper {
         this.post(new Runnable() {
             @Override
             public void run() {
-                setDisplayedChild(indexEmpty);
+                setDisplayedChild(mIndexEmpty);
             }
         });
     }
