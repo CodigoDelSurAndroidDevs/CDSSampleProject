@@ -2,6 +2,7 @@ package com.codigodelsur.androidsampleproject.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,8 @@ import com.codigodelsur.androidsampleproject.network.ApiManager;
 import com.codigodelsur.androidsampleproject.response.HighResResponse;
 import com.codigodelsur.androidsampleproject.view.StateView;
 
+import java.util.Random;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerViewImages;
     private ImageListAdapter mImageAdapter;
     private StateView mStateView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +41,49 @@ public class MainActivity extends AppCompatActivity {
 
         mStateView.showLoading();
 
-        ApiManager.getInstance().search("colors", new Callback<HighResResponse>() {
-            @Override
-            public void success(HighResResponse highResResponse, Response response) {
-                processSuccessResponse(highResResponse);
-            }
+        getContent();
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout) mStateView.findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void failure(RetrofitError error) {
-                processErrorResponse(error);
+            public void onRefresh() {
+                getContent();
             }
         });
+
+
+    }
+
+    private void getContent() {
+
+        String query = "colors";
+
+        //Set a random page in order to
+        // get different content (or an empty result)
+        // every time we refresh the list
+
+        int page = new Random().nextInt(10), resultsPerPage = 15;
+
+        ApiManager.getInstance().search(
+                query,
+                page,
+                resultsPerPage, new Callback<HighResResponse>() {
+                    @Override
+                    public void success(HighResResponse highResResponse, Response response) {
+                        processSuccessResponse(highResResponse);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        processErrorResponse(error);
+                    }
+                });
 
     }
 
     private void processErrorResponse(RetrofitError error) {
         mStateView.showContent();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     private void processSuccessResponse(HighResResponse highResResponse) {
@@ -62,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             mStateView.showEmpty();
         }
+
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     static class CustomLayoutManager extends LinearLayoutManager {

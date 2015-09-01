@@ -1,5 +1,6 @@
 package com.codigodelsur.androidsampleproject.adapter;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by marcosambrosi on 9/1/15.
@@ -35,6 +37,10 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
     @Override
     public void onBindViewHolder(ImageViewHolder imageViewHolder, int i) {
         Image image = mImages.get(i);
+
+        Random rnd = new Random();
+        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        imageViewHolder.imageView.setBackgroundColor(color);
 
         Picasso.with(imageViewHolder.itemView.getContext()).
                 load(image.webformatUrl).

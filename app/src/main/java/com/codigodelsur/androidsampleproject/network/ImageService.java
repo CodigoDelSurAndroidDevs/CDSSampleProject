@@ -14,14 +14,17 @@ public interface ImageService {
 
     @GET("/api/")
     void searchHighRes(@Query("username") String username,
-                           @Query("key") String key,
-                           @Query("response_group") String responseGroup,
-                           @Query("q") String query,
-                           Callback<HighResResponse> callback);  @GET("/api/")
+                       @Query("key") String key,
+                       @Query("response_group") String responseGroup,
+                       @Query("q") String query,
+                       Callback<HighResResponse> callback);
 
+    @GET("/api/")
     void search(@Query("username") String username,
-                           @Query("key") String key,
-                           @Query("image_type") String imageType,
-                           @Query("q") String query,
-                           Callback<HighResResponse> callback);
+                @Query("key") String key,
+                @Query("image_type") String imageType,
+                @Query("q") String query,
+                @Query("page") int page,
+                @Query("per_page") int perPage,
+                Callback<HighResResponse> callback);
 }

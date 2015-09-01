@@ -61,12 +61,12 @@ public class ApiManager {
      * @param query
      * @param callback
      */
-    public void search(String query, Callback<HighResResponse> callback) {
+    public void search(String query, int page, int resultsPerPage, Callback<HighResResponse> callback) {
         sService.search(
                 Auth.getInstance().getUsername(),
                 Auth.getInstance().getKey(),
                 "photo",
-                query, callback);
+                query, page, resultsPerPage, callback);
     }
 
 }
