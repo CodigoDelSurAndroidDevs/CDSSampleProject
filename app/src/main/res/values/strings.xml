@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">AndroidSampleProject</string>
-
+    <string name="app_name">CodigoDelSur Image Fetcher</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>
