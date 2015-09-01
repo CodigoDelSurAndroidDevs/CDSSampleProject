@@ -5,7 +5,5 @@ package com.codigodelsur.androidsampleproject.util;
  */
 public class Constants {
 
-    public static String USERNAME;
-
-
+    public static final String BASE_URL = "https://pixabay.com";
 }

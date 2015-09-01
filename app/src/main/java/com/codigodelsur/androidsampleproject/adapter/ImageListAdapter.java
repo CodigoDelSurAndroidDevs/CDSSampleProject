@@ -1,10 +1,12 @@
 package com.codigodelsur.androidsampleproject.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.model.Image;
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +22,14 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        return new ImageViewHolder(viewGroup);
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+
+        View itemView = inflater.inflate(R.layout.image_cell, viewGroup, false);
+
+        ImageViewHolder imageViewHolder = new ImageViewHolder(itemView);
+        imageViewHolder.imageView = (ImageView) itemView.findViewById(R.id.image);
+
+        return imageViewHolder;
     }
 
     @Override
@@ -38,13 +47,13 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
     }
 
 
-    public void addAll(List<Image> images){
+    public void addAll(List<Image> images) {
         mImages.clear();
         mImages.addAll(images);
         notifyDataSetChanged();
     }
 
-    public static class ImageViewHolder extends RecyclerView.ViewHolder{
+    public static class ImageViewHolder extends RecyclerView.ViewHolder {
 
         public ImageViewHolder(View itemView) {
             super(itemView);

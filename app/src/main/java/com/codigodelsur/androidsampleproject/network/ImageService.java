@@ -12,10 +12,16 @@ import retrofit.http.Query;
  */
 public interface ImageService {
 
-    @GET("https://pixabay.com/api/")
+    @GET("/api/")
     void searchHighRes(@Query("username") String username,
                            @Query("key") String key,
                            @Query("response_group") String responseGroup,
+                           @Query("q") String query,
+                           Callback<HighResResponse> callback);  @GET("/api/")
+
+    void search(@Query("username") String username,
+                           @Query("key") String key,
+                           @Query("image_type") String imageType,
                            @Query("q") String query,
                            Callback<HighResResponse> callback);
 }

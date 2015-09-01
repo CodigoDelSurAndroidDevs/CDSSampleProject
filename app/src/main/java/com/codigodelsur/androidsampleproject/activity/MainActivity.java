@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.adapter.ImageListAdapter;
+import com.codigodelsur.androidsampleproject.network.ApiManager;
+import com.codigodelsur.androidsampleproject.response.HighResResponse;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +31,17 @@ public class MainActivity extends AppCompatActivity {
         mImageAdapter = new ImageListAdapter();
         mRecyclerViewImages.setAdapter(mImageAdapter);
 
+        ApiManager.getInstance().search("yellow", new Callback<HighResResponse>() {
+            @Override
+            public void success(HighResResponse highResResponse, Response response) {
+                mImageAdapter.addAll(highResResponse.images);
+            }
 
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
 
     }
 
