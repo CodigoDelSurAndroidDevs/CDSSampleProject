@@ -9,8 +9,9 @@
     tools:context=".MainActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:height="match_parent"
-        android:with="match_parent">
+        android:id="@+id/recycler_view_images"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
