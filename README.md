@@ -1,6 +1,6 @@
 # CDSSampleProject
 
-A simple Android project that fetch images using the [Pixabay API](https://pixabay.com/api/docs/)
+A simple [Pixabay API](https://pixabay.com/api/docs/) image fetcher
 
 
 
