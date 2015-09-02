@@ -1,6 +1,6 @@
 package com.codigodelsur.androidsampleproject.network;
 
-import com.codigodelsur.androidsampleproject.response.HighResResponse;
+import com.codigodelsur.androidsampleproject.response.ImageSearchResponse;
 
 import retrofit.Callback;
 
@@ -17,7 +17,7 @@ public interface ImageService {
                        @Query("key") String key,
                        @Query("response_group") String responseGroup,
                        @Query("q") String query,
-                       Callback<HighResResponse> callback);
+                       Callback<ImageSearchResponse> callback);
 
     @GET("/api/")
     void search(@Query("username") String username,
@@ -26,5 +26,5 @@ public interface ImageService {
                 @Query("q") String query,
                 @Query("page") int page,
                 @Query("per_page") int perPage,
-                Callback<HighResResponse> callback);
+                Callback<ImageSearchResponse> callback);
 }

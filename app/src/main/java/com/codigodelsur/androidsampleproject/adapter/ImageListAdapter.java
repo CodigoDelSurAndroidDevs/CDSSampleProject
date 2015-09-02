@@ -39,7 +39,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         Image image = mImages.get(i);
 
         Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        int color = Color.argb(50, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         imageViewHolder.imageView.setBackgroundColor(color);
 
         Picasso.with(imageViewHolder.itemView.getContext()).

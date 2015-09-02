@@ -17,6 +17,8 @@ gen/
 build/
 /*/build/
 
+.idea/
+
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -26,4 +28,3 @@ proguard/
 # Log Files
 *.log
 
-/app/src/main/res/values/api.xml

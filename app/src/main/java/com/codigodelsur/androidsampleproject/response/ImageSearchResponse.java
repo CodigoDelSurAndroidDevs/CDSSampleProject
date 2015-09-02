@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by marcosambrosi on 9/1/15.
  */
-public class HighResResponse {
+public class ImageSearchResponse {
     public long total;
     public long totalHits;
 

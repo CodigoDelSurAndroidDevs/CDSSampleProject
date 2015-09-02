@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.adapter.ImageListAdapter;
 import com.codigodelsur.androidsampleproject.network.ApiManager;
-import com.codigodelsur.androidsampleproject.response.HighResResponse;
+import com.codigodelsur.androidsampleproject.response.ImageSearchResponse;
 import com.codigodelsur.androidsampleproject.view.StateView;
 
 import java.util.Random;
@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
         ApiManager.getInstance().search(
                 query,
                 page,
-                resultsPerPage, new Callback<HighResResponse>() {
+                resultsPerPage, new Callback<ImageSearchResponse>() {
                     @Override
-                    public void success(HighResResponse highResResponse, Response response) {
-                        processSuccessResponse(highResResponse);
+                    public void success(ImageSearchResponse imageSearchResponse, Response response) {
+                        processSuccessResponse(imageSearchResponse);
                     }
 
                     @Override
@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    private void processSuccessResponse(HighResResponse highResResponse) {
-        if (!highResResponse.images.isEmpty()) {
-            mImageAdapter.addAll(highResResponse.images);
+    private void processSuccessResponse(ImageSearchResponse imageSearchResponse) {
+        if (!imageSearchResponse.images.isEmpty()) {
+            mImageAdapter.addAll(imageSearchResponse.images);
             mStateView.showContent();
         } else {
             mStateView.showEmpty();

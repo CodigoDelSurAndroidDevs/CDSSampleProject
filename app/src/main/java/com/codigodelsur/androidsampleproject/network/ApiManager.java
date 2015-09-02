@@ -1,6 +1,6 @@
 package com.codigodelsur.androidsampleproject.network;
 
-import com.codigodelsur.androidsampleproject.response.HighResResponse;
+import com.codigodelsur.androidsampleproject.response.ImageSearchResponse;
 import com.codigodelsur.androidsampleproject.util.Auth;
 import com.codigodelsur.androidsampleproject.util.Constants;
 
@@ -47,7 +47,7 @@ public class ApiManager {
      * @param query
      * @param callback
      */
-    public void searchHighRes(String query, Callback<HighResResponse> callback) {
+    public void searchHighRes(String query, Callback<ImageSearchResponse> callback) {
         sService.searchHighRes(
                 Auth.getInstance().getUsername(),
                 Auth.getInstance().getKey(),
@@ -61,7 +61,7 @@ public class ApiManager {
      * @param query
      * @param callback
      */
-    public void search(String query, int page, int resultsPerPage, Callback<HighResResponse> callback) {
+    public void search(String query, int page, int resultsPerPage, Callback<ImageSearchResponse> callback) {
         sService.search(
                 Auth.getInstance().getUsername(),
                 Auth.getInstance().getKey(),
