@@ -22,7 +22,5 @@ Demo
 ![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/res/3.png)
 
 
-Video
+[Video](https://drive.google.com/file/d/0B1u0H7-WZL_xSWFocWFReV9WMWM/view?usp=sharing)
 =====
-
-[![ScreenShot](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/res/3.png)](https://drive.google.com/file/d/0B1u0H7-WZL_xSWFocWFReV9WMWM/view?usp=sharing)
