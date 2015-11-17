@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/image_cell_height"
         android:layout_margin="@dimen/margin_medium"
-        card_view:cardCornerRadius="3dp"
         card_view:cardElevation="4dp"
         card_view:cardUseCompatPadding="true"
         >
@@ -77,9 +76,10 @@
                 android:layout_toEndOf="@+id/image_favorite"
                 android:layout_toRightOf="@+id/image_favorite"
                 android:text="1000"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/primary_text"
-                app:font="@{`roboto_bold`}"/>
+                android:textSize="@dimen/counter_text_size"
+                app:font="@{`roboto_bold`}"
+                android:gravity="center_vertical"/>
 
 
             <ImageView
@@ -101,9 +101,10 @@
                 android:layout_toEndOf="@+id/image_comments"
                 android:layout_toRightOf="@+id/image_comments"
                 android:text="50"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/primary_text"
-                app:font="@{`roboto_bold`}"/>
+                android:textSize="@dimen/counter_text_size"
+                app:font="@{`roboto_bold`}"
+                android:gravity="center_vertical"/>
 
 
             <ImageView
@@ -126,10 +127,10 @@
                 android:layout_alignTop="@+id/image_downloads"
                 android:layout_marginLeft="@dimen/margin_small"
                 android:text="20"
-                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/primary_text"
-                app:font="@{`roboto_bold`}"/>
-
+                android:textSize="@dimen/counter_text_size"
+                app:font="@{`roboto_bold`}"
+                android:gravity="center_vertical"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
