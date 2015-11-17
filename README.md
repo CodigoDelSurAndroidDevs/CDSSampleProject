@@ -11,16 +11,17 @@ Dependencies
 
 [Picasso](https://github.com/square/picasso) for async image loading
 
+[Google Design Support Library](http://developer.android.com/intl/es/tools/support-library/features.html#design)
+
+[RecyclerView](http://developer.android.com/intl/es/tools/support-library/features.html#v7-recyclerview)
+
+[CardView](http://developer.android.com/intl/es/tools/support-library/features.html#v7-cardview)
+
+[Lisa Wray's Font Binding](https://github.com/lisawray/fontbinding) easy way to implement custom fonts
 
 Demo
 ====
 
-![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/res/1.png)
+![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/master/demo.gif)
 
-![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/res/2.png)
-
-![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/res/3.png)
-
-
-[Video](https://drive.google.com/file/d/0B1u0H7-WZL_xSWFocWFReV9WMWM/view?usp=sharing)
 =====
