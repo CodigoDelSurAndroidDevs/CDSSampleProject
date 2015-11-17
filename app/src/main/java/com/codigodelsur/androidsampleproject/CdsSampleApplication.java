@@ -19,8 +19,11 @@ public class CdsSampleApplication extends Application {
 
         CdsSampleApplication.context = getApplicationContext();
 
-        FontCache.getInstance().addFont("exo_regular", "Exo2-Regular.otf");
-        FontCache.getInstance().addFont("exo_semibold", "Exo2-SemiBold.otf");
+        FontCache.getInstance().addFont("toolbar_font", "Pacifico.ttf");
+        FontCache.getInstance().addFont("roboto_regular", "Roboto-Regular.ttf");
+        FontCache.getInstance().addFont("roboto_medium", "Roboto-Medium.ttf");
+        FontCache.getInstance().addFont("roboto_bold", "Roboto-Bold.ttf");
+
 
         Auth.getInstance().setUsername(getString(R.string.username));
         Auth.getInstance().setKey(getString(R.string.key));

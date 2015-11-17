@@ -25,7 +25,6 @@
                 android:layout_alignParentTop="true"
                 android:elevation="6dp"
                 android:minHeight="?attr/actionBarSize"
-
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                 <TextView
@@ -33,9 +32,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Toolbar Title"
-                    android:textAllCaps="true"
+                    android:textSize="23sp"
                     android:textColor="@color/primary_text"
-                    app:font="@{`exo_semibold`}"
+                    app:font="@{`toolbar_font`}"
                     />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>

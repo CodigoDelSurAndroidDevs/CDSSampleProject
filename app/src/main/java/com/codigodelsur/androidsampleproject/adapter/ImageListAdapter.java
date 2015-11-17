@@ -1,14 +1,13 @@
 package com.codigodelsur.androidsampleproject.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.graphics.Palette;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.model.Image;
@@ -38,7 +37,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         imageViewHolder.imageViewBackground = (ImageView) itemView.findViewById(R.id.image);
         imageViewHolder.imageViewProfile = (CircleImageView) itemView.findViewById(R.id.profile_image);
         imageViewHolder.infoContainer = itemView.findViewById(R.id.info_container);
-        imageViewHolder.imageViewProfile.bringToFront();
+        imageViewHolder.userName = (TextView) itemView.findViewById(R.id.user_name);
 
         return imageViewHolder;
     }
@@ -48,9 +47,12 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         Image image = mImages.get(i);
 
         imageViewHolder.imageViewBackground.setBackgroundColor(ColorUtil.getRandomColor());
-        Context context = imageViewHolder.itemView.getContext();
+
+        imageViewHolder.userName.setText(image.userName);
 
         try {
+
+            Context context = imageViewHolder.itemView.getContext();
 
             Picasso.with(context).
                     load(image.webformatUrl).
@@ -93,27 +95,30 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
         public ImageViewHolder(View itemView) {
             super(itemView);
+            DataBindingUtil.bind(itemView);
         }
 
+        public TextView userName;
         public ImageView imageViewBackground;
         public CircleImageView imageViewProfile;
         public View infoContainer;
 
         private void applyPalette() {
-            final Bitmap bitmap = ((BitmapDrawable) imageViewBackground.
-                    getDrawable()).
-                    getBitmap();
-
-            new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
-                @Override
-                public void onGenerated(Palette palette) {
-                    Palette.Swatch vibrantSwatch = palette.getDarkVibrantSwatch();
-
-                    if (vibrantSwatch != null) {
-                        infoContainer.setBackgroundColor(vibrantSwatch.getRgb());
-                    }
-                }
-            });
+//            final Bitmap bitmap = ((BitmapDrawable) imageViewBackground.
+//                    getDrawable()).
+//                    getBitmap();
+//
+//            new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
+//                @Override
+//                public void onGenerated(Palette palette) {
+//                    Palette.Swatch vibrantSwatch = palette.getDarkVibrantSwatch();
+//
+//                    if (vibrantSwatch != null) {
+//                        //infoContainer.setBackgroundColor(vibrantSwatch.getRgb());
+//                        userName.setTextColor(vibrantSwatch.getTitleTextColor());
+//                    }
+//                }
+//            });
 
         }
     }
