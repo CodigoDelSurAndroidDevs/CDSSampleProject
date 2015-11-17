@@ -1,6 +1,6 @@
 package com.codigodelsur.androidsampleproject.adapter;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +9,13 @@ import android.widget.ImageView;
 
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.model.Image;
+import com.codigodelsur.androidsampleproject.util.ColorUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by marcosambrosi on 9/1/15.
@@ -29,7 +31,9 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         View itemView = inflater.inflate(R.layout.image_cell, viewGroup, false);
 
         ImageViewHolder imageViewHolder = new ImageViewHolder(itemView);
-        imageViewHolder.imageView = (ImageView) itemView.findViewById(R.id.image);
+        imageViewHolder.imageViewBackground = (ImageView) itemView.findViewById(R.id.image);
+        imageViewHolder.imageViewProfile = (CircleImageView) itemView.findViewById(R.id.profile_image);
+        imageViewHolder.imageViewProfile.bringToFront();
 
         return imageViewHolder;
     }
@@ -38,13 +42,24 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
     public void onBindViewHolder(ImageViewHolder imageViewHolder, int i) {
         Image image = mImages.get(i);
 
-        Random rnd = new Random();
-        int color = Color.argb(50, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-        imageViewHolder.imageView.setBackgroundColor(color);
+        imageViewHolder.imageViewBackground.setBackgroundColor(ColorUtil.getRandomColor());
+        Context context = imageViewHolder.itemView.getContext();
 
-        Picasso.with(imageViewHolder.itemView.getContext()).
-                load(image.webformatUrl).
-                into(imageViewHolder.imageView);
+        try {
+            
+            Picasso.with(context).
+                    load(image.webformatUrl).
+                    into(imageViewHolder.imageViewBackground);
+
+            Picasso.with(context).
+                    load(image.userImageUrl).
+                    into(imageViewHolder.imageViewProfile);
+
+        } catch (IllegalArgumentException e) {
+            //Path is empty
+        }
+
+
     }
 
     @Override
@@ -65,6 +80,7 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
             super(itemView);
         }
 
-        public ImageView imageView;
+        public ImageView imageViewBackground;
+        public CircleImageView imageViewProfile;
     }
 }

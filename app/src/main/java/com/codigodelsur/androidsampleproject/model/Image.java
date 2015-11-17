@@ -12,4 +12,11 @@ public class Image {
     @SerializedName("webformatURL")
     public String webformatUrl;
 
+
+    @SerializedName("user")
+    public String userName;
+
+    @SerializedName("userImageURL")
+    public String userImageUrl;
+
 }
