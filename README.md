@@ -24,4 +24,6 @@ Demo
 
 ![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/master/demo.gif)
 
+![](https://raw.github.com/CodigoDelSurAndroidDevs/CDSSampleProject/master/screenshot1.png)
+
 =====
