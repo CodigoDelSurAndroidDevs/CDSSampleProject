@@ -9,7 +9,7 @@ Dependencies
 
 [Retrofit](https://github.com/square/retrofit) for networking
 
-[Picasso](https://github.com/square/picasso) for async image loaging
+[Picasso](https://github.com/square/picasso) for async image loading
 
 
 Demo
