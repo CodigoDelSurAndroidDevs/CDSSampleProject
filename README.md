@@ -17,6 +17,8 @@ Dependencies
 
 [CardView](http://developer.android.com/intl/es/tools/support-library/features.html#v7-cardview)
 
+[Lisa Wray's Font Binding](https://github.com/lisawray/fontbinding) easy way to implement custom fonts
+
 Demo
 ====
 
