@@ -53,11 +53,13 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
         imageViewHolder.userName.setText(image.userName);
 
-        imageViewHolder.favorites.setText(String.valueOf(image.favoritesCount));
-        imageViewHolder.comments.setText(String.valueOf(image.commentsCount));
-        imageViewHolder.downloads.setText(String.valueOf(image.downloadsCount));
+        //Counters
+        imageViewHolder.favorites.setText(withSuffix(image.favoritesCount));
+        imageViewHolder.comments.setText(withSuffix(image.commentsCount));
+        imageViewHolder.downloads.setText(withSuffix(image.downloadsCount));
 
 
+        //Load images from server
         try {
 
             Context context = imageViewHolder.itemView.getContext();
@@ -104,4 +106,13 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         public CircleImageView imageViewProfile;
         public View infoContainer;
     }
+
+    public static String withSuffix(long count) {
+        if (count < 1000) return "" + count;
+        int exp = (int) (Math.log(count) / Math.log(1000));
+        return String.format("%.1f %c",
+                count / Math.pow(1000, exp),
+                "kMGTPE".charAt(exp - 1));
+    }
+
 }

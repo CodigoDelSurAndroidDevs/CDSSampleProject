@@ -21,12 +21,12 @@ public class Image {
 
 
     @SerializedName("views")
-    public double favoritesCount;
+    public long favoritesCount;
 
     @SerializedName("comments")
-    public double commentsCount;
+    public long commentsCount;
 
     @SerializedName("downloads")
-    public double downloadsCount;
+    public long downloadsCount;
 
 }
