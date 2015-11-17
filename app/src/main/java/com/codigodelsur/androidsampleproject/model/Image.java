@@ -19,4 +19,14 @@ public class Image {
     @SerializedName("userImageURL")
     public String userImageUrl;
 
+
+    @SerializedName("views")
+    public double favoritesCount;
+
+    @SerializedName("comments")
+    public double commentsCount;
+
+    @SerializedName("downloads")
+    public double downloadsCount;
+
 }

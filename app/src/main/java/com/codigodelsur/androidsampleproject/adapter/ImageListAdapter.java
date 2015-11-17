@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.model.Image;
 import com.codigodelsur.androidsampleproject.util.ColorUtil;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,7 +36,11 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         imageViewHolder.imageViewBackground = (ImageView) itemView.findViewById(R.id.image);
         imageViewHolder.imageViewProfile = (CircleImageView) itemView.findViewById(R.id.profile_image);
         imageViewHolder.infoContainer = itemView.findViewById(R.id.info_container);
+
         imageViewHolder.userName = (TextView) itemView.findViewById(R.id.user_name);
+        imageViewHolder.favorites = (TextView) itemView.findViewById(R.id.text_view_favorites);
+        imageViewHolder.comments = (TextView) itemView.findViewById(R.id.text_view_comments);
+        imageViewHolder.downloads = (TextView) itemView.findViewById(R.id.text_view_downloads);
 
         return imageViewHolder;
     }
@@ -50,23 +53,18 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
 
         imageViewHolder.userName.setText(image.userName);
 
+        imageViewHolder.favorites.setText(String.valueOf(image.favoritesCount));
+        imageViewHolder.comments.setText(String.valueOf(image.commentsCount));
+        imageViewHolder.downloads.setText(String.valueOf(image.downloadsCount));
+
+
         try {
 
             Context context = imageViewHolder.itemView.getContext();
 
             Picasso.with(context).
                     load(image.webformatUrl).
-                    into(imageViewHolder.imageViewBackground, new Callback() {
-                        @Override
-                        public void onSuccess() {
-                            imageViewHolder.applyPalette();
-                        }
-
-                        @Override
-                        public void onError() {
-
-                        }
-                    });
+                    into(imageViewHolder.imageViewBackground);
 
             Picasso.with(context).
                     load(image.userImageUrl).
@@ -99,27 +97,11 @@ public class ImageListAdapter extends RecyclerView.Adapter<ImageListAdapter.Imag
         }
 
         public TextView userName;
+        public TextView favorites;
+        public TextView comments;
+        public TextView downloads;
         public ImageView imageViewBackground;
         public CircleImageView imageViewProfile;
         public View infoContainer;
-
-        private void applyPalette() {
-//            final Bitmap bitmap = ((BitmapDrawable) imageViewBackground.
-//                    getDrawable()).
-//                    getBitmap();
-//
-//            new Palette.Builder(bitmap).generate(new Palette.PaletteAsyncListener() {
-//                @Override
-//                public void onGenerated(Palette palette) {
-//                    Palette.Swatch vibrantSwatch = palette.getDarkVibrantSwatch();
-//
-//                    if (vibrantSwatch != null) {
-//                        //infoContainer.setBackgroundColor(vibrantSwatch.getRgb());
-//                        userName.setTextColor(vibrantSwatch.getTitleTextColor());
-//                    }
-//                }
-//            });
-
-        }
     }
 }
