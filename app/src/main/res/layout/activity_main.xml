@@ -32,7 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Toolbar Title"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/primary_text"
                     app:font="@{`toolbar_font`}"
                     />
