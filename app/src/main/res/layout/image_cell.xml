@@ -7,6 +7,7 @@
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true"
+    android:layout_margin="@dimen/margin_medium"
     >
 
 

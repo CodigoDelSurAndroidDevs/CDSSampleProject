@@ -1,11 +1,14 @@
 package com.codigodelsur.androidsampleproject.activity;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.codigodelsur.androidsampleproject.R;
 import com.codigodelsur.androidsampleproject.adapter.ImageListAdapter;
@@ -29,7 +32,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(R.string.app_name);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         mStateView = (StateView) findViewById(R.id.state_view);
 
